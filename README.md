@@ -65,4 +65,10 @@ We omitted parallelization as used in the original MuZero paper due to this reas
 - Silver, David et al. (Dec. 2018). “A general reinforcement learning algorithm that masters chess, shogi, and Go through self-play”. In:Science 362.6419, pp. 1140–1144.DOI:10.1126/science.aar6404
 
 
-
+## Docker
+```shell
+docker build -t muzero .
+docker run -u $(id -u):$(id -g) --gpus all --rm -it -v $(pwd):/app -w=/app muzero
+mkdir -p out/AlphaZeroOut
+python Main.py train -c Configurations/ModelConfigs/AlphazeroBoard.json --game hex --gpu 0
+```
